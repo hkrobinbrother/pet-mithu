@@ -13,8 +13,8 @@ import BannerText from "../Home/BannerText"
 
 const Banner = () => {
   return (
-    <div className="relative">
-      <div>
+    <div className="relative h-[800px] ">
+      <div className="">
         <Carousel
           autoPlay={true}
           interval={2000}
@@ -23,21 +23,22 @@ const Banner = () => {
           showStatus={false}
           showIndicators={true}
           stopOnHover={false}
+          
         >
-          <div >
-            <img src={img1} />
+          <div  className="h-[800px]" >
+            <img className="h-full w-full object-cover" src={img1} />
           </div>
-          <div>
-            <img src={img2} />
+          <div className="h-[800px]">
+            <img className="h-full w-full object-cover"  src={img2} />
           </div>
-          <div >
-            <img src={img3} />
+          <div className="h-[800px]">
+            <img className="h-full w-full object-cover"  src={img3} />
           </div>
-          <div >
-            <img src={img4} />
+          <div className="h-[800px]">
+            <img className="h-full w-full object-cover"  src={img4} />
           </div>
-          <div >
-            <img src={img5} />
+          <div className="h-[800px]">
+            <img className="h-full w-full object-cover"  src={img5} />
           </div>
         </Carousel>
       </div>
