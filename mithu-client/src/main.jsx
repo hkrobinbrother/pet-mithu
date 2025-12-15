@@ -4,9 +4,12 @@ import './index.css'
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import App from './App';
-import Home from './Home/Home';
+
+import Home from './Pages/Home/Home';
 import MainLayout from './Layout/MainLayout';
+import PetListing from './Pages/PetListing/PetListing';
+
+;
 
 const router = createBrowserRouter([
   {
@@ -16,7 +19,11 @@ const router = createBrowserRouter([
       {
         path:"/",
         element:<Home></Home>
-      }
+      },
+      {
+        path:"/petListing",
+        element:<PetListing></PetListing>
+      },
     ]
   },
 ]);

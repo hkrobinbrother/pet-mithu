@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import logoImg from "../../public/images/logopet.png"
 
 
@@ -5,11 +6,11 @@ const NavBar = () => {
   const nav = (
     <>
       <li>
-        <a>Home</a>
+        <Link to="/">Home</Link>
       </li>
 
       <li>
-        <a>Pet Listing</a>
+        <Link to="/petListing">Pet Listing</Link>
       </li>
       <li>
         <a>Donation Campaigns</a>
@@ -22,7 +23,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="bg-blue-200">
+    <div className="bg-black/20 text-white font-bold fixed z-10 w-full ">
       <div className="container mx-auto">
         <div className="navbar ">
           <div className="navbar-start">
@@ -57,7 +58,7 @@ const NavBar = () => {
             </div>
             <div className="flex items-center">
                 <img className="w-18 h-18" src={logoImg} alt="" />
-              <a className="btn btn-ghost text-2xl  font-bold uppercase ">Mithu</a>
+              <Link className="btn btn-ghost text-2xl  font-bold uppercase ">Mithu</Link>
             </div>
           </div>
           <div className="navbar-end hidden lg:flex">
