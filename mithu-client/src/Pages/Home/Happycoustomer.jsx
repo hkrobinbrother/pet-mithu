@@ -1,4 +1,5 @@
 import SectionTitle from "../../Components/SectionTitle";
+import Review from "./Review";
 
 
 const Happycoustomer = () => {
@@ -8,7 +9,11 @@ const Happycoustomer = () => {
             firstHeading="  Testimonials"
             SecondHeading="Our Happy Customers"
             thirdHeding="The best overall dog DNA test is Embark Breed & Health Kit (view at Chewy), which provides you with a breed brwn and information Most dogs"
-            ></SectionTitle>            
+            ></SectionTitle> 
+
+            <div>
+                    <Review></Review>
+            </div>           
         </div>
     );
 };

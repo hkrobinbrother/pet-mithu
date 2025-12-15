@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import Happycoustomer from "./Happycoustomer";
+import Review from "./Review";
 import WatingForAdoption from "./WatingForAdoption";
 import WorkingForDog from "./WorkingForDog";
 
@@ -12,6 +13,7 @@ const Home = () => {
             <WorkingForDog></WorkingForDog>
             <WatingForAdoption></WatingForAdoption>
             <Happycoustomer></Happycoustomer>
+            
         </div>
     );
 };
