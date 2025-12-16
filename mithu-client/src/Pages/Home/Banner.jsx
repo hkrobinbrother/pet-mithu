@@ -25,19 +25,19 @@ const Banner = () => {
           stopOnHover={false}
           
         >
-          <div  className="h-[800px]" >
+          <div  className="h-200" >
             <img className="h-full w-full object-cover" src={img1} />
           </div>
-          <div className="h-[800px]">
+          <div className="h-200">
             <img className="h-full w-full object-cover"  src={img2} />
           </div>
-          <div className="h-[800px]">
+          <div className="h-200">
             <img className="h-full w-full object-cover"  src={img3} />
           </div>
-          <div className="h-[800px]">
+          <div className="h-200">
             <img className="h-full w-full object-cover"  src={img4} />
           </div>
-          <div className="h-[800px]">
+          <div className="h-200">
             <img className="h-full w-full object-cover"  src={img5} />
           </div>
         </Carousel>
