@@ -4,11 +4,11 @@ const PetListing = () => {
 
     const [petList,setPetList] = useState([])
 
-    useEffect(()=>{
-        fetch("petListingss")
-        .then(res=> res.json())
-        .then(data => setPetList(data))
-    },[])
+    // useEffect(()=>{
+    //     fetch("petListingss")
+    //     .then(res=> res.json())
+    //     .then(data => setPetList(data))
+    // },[])
 
     return (
         <div>
