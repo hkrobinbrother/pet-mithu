@@ -1,27 +1,27 @@
-import  { useEffect, useState } from 'react';
+import SectionTitle from "../../Components/SectionTitle";
+import DogListBanner from "./DogListBanner";
+import Pets from "./Pets";
 
 const PetListing = () => {
+  return (
+    <div>
+      <div>
+        <DogListBanner></DogListBanner>
+      </div>
+      <div className="mt-10">
+        <SectionTitle
+      firstHeading="Meet the animals"
+      SecondHeading="Puppies Waiting for Adoption"
+      thirdHeding="The best overall dog DNA test is Embark Breed & Health Kit (view at Chewy), which provides you with a breed brwn and information Most dogs"
+      >
 
-    const [petList,setPetList] = useState([])
-
-    // useEffect(()=>{
-    //     fetch("petListingss")
-    //     .then(res=> res.json())
-    //     .then(data => setPetList(data))
-    // },[])
-
-    return (
-        <div>
-            {
-                petList.map((pet) =>( 
-                    <div key={pet.id}>
-                        <h1>{pet.name}</h1>
-                        {/* <img src={pet.photo} alt="" /> */}
-                    </div>
-                ))
-            }
-        </div>
-    );
+      </SectionTitle>
+      </div>
+      <div className="">
+        <Pets></Pets>
+      </div>
+    </div>
+  );
 };
 
 export default PetListing;

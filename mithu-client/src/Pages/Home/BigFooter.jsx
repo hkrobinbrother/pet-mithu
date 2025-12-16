@@ -1,6 +1,7 @@
 import smallDog  from "../../../public/images/2dog.png"
 const BigFooter = () => {
   return (
+    
     <div mt-10>
       <footer className="footer bg-amber-50 sm:footer-horizontal  text-base-content mt-10 p-10">
         <nav>
