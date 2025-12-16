@@ -8,6 +8,7 @@ import { RouterProvider } from "react-router/dom";
 import Home from './Pages/Home/Home';
 import MainLayout from './Layout/MainLayout';
 import PetListing from './Pages/PetListing/PetListing';
+import DonationCamping from './Pages/DonationCamping/DonationCamping';
 
 ;
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path:"/petListing",
         element:<PetListing></PetListing>
+      },
+      {
+        path:"/Donation",
+        element:<DonationCamping></DonationCamping>
       },
     ]
   },

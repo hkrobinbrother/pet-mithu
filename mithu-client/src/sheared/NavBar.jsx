@@ -13,7 +13,7 @@ const NavBar = () => {
         <Link to="/petListing">Pet Listing</Link>
       </li>
       <li>
-        <a>Donation Campaigns</a>
+        <Link to="/donation">Donation Campaigns</Link>
       </li>
 
       <li className="ml-14">
