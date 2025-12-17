@@ -9,8 +9,9 @@ import MainLayout from "./Layout/MainLayout";
 import PetListing from "./Pages/PetListing/PetListing";
 import DonationCamping from "./Pages/DonationCamping/DonationCamping";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,8 @@ const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />,
+    <HelmetProvider>
+      <RouterProvider router={router} />,
+    </HelmetProvider>
   </QueryClientProvider>
 );

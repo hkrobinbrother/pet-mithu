@@ -1,6 +1,5 @@
 import { Link } from "react-router";
-import logoImg from "../../public/images/logopet.png"
-
+import logoImg from "../../public/images/logopet.png";
 
 const NavBar = () => {
   const nav = (
@@ -17,7 +16,17 @@ const NavBar = () => {
       </li>
 
       <li className="ml-14">
-        <a >Login</a>
+        <details className="dropdown">
+          <summary className="btn m-1">login</summary>
+          <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm ">
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>LogOut</a>
+            </li>
+          </ul>
+        </details>
       </li>
     </>
   );
@@ -57,14 +66,15 @@ const NavBar = () => {
               </ul>
             </div>
             <div className="flex items-center">
-                <img className="w-18 h-18" src={logoImg} alt="" />
-              <Link className="btn btn-ghost text-2xl  font-bold uppercase ">Mithu</Link>
+              <img className="w-18 h-18" src={logoImg} alt="" />
+              <Link className="btn btn-ghost text-2xl  font-bold uppercase ">
+                Mithu
+              </Link>
             </div>
           </div>
           <div className="navbar-end hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{nav}</ul>
           </div>
-          
         </div>
       </div>
     </div>

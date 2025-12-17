@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../Components/SectionTitle";
 import DonatePets from "./DonatePets";
 import DonationBanner from "./DonationBanner";
@@ -5,6 +6,9 @@ import DonationBanner from "./DonationBanner";
 const DonationCamping = () => {
   return (
     <div>
+      <Helmet>
+        <title>Donation</title>
+      </Helmet>
       <DonationBanner></DonationBanner>
       <div className="mt-10">
         <SectionTitle
