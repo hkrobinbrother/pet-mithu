@@ -1,4 +1,5 @@
 import SectionTitle from "../../Components/SectionTitle";
+import FAQ from "../Home/FAQ";
 import DogListBanner from "./DogListBanner";
 import Pets from "./Pets";
 
@@ -19,6 +20,9 @@ const PetListing = () => {
       </div>
       <div className="">
         <Pets></Pets>
+      </div>
+      <div>
+        <FAQ></FAQ>
       </div>
     </div>
   );

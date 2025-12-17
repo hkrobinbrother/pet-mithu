@@ -1,6 +1,7 @@
 import { useState } from "react";
+import SectionTitle from "../../Components/SectionTitle";
 
-const Contact = () => {
+const FAQ = () => {
   const faqs = [
     {
       title: "What services does Zupet offer for my pet?",
@@ -38,6 +39,12 @@ const Contact = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
+      <SectionTitle
+      firstHeading="FAQ Question"
+      SecondHeading="History & Family Adoption"
+      >
+
+      </SectionTitle>
       <h2 className="text-3xl font-bold text-center mb-8">FAQ</h2>
 
       <div className="space-y-4">
@@ -66,4 +73,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default FAQ;

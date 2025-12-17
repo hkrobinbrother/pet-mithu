@@ -49,7 +49,7 @@ const Pets = () => {
                   {" "}
                   <Rating style={{ maxWidth: 120 }} value={pet.rating} readOnly />
                 </h1>
-                <h1 className="text-gray-500 font-bold">Total price: ${pet.price}</h1>
+                <h1 className="text-gray-500 font-bold">{pet.location}</h1>
               </div>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">Buy Now</button>

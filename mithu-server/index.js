@@ -28,14 +28,22 @@ async function run() {
     await client.connect();
 
     const petCollection = client.db("mithuDB").collection("petListing")
+    const donationCollection = client.db("mithuDB").collection("donation")
 
-
+    // pet List 
 
     app.get("/petListing", async(req,res)=>{
       const result = await petCollection.find().toArray()
       res.send(result)
     })
 
+
+    // donation
+
+    app.get("/donation",async(req,res)=>{
+      const result = await donationCollection.find().toArray()
+      res.send(result)
+    })
 
 
     await client.db("admin").command({ ping: 1 });

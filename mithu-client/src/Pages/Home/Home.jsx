@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import BigFooter from "./BigFooter";
-import Contact from "./Contact";
+import FAQ from "./FAQ";
 import Happycoustomer from "./Happycoustomer";
 import Review from "./Review";
 import WatingForAdoption from "./WatingForAdoption";
@@ -15,7 +15,7 @@ const Home = () => {
             <WorkingForDog></WorkingForDog>
             <WatingForAdoption></WatingForAdoption>
             <Happycoustomer></Happycoustomer>
-            <Contact></Contact>
+            <FAQ></FAQ>
             <BigFooter></BigFooter>
         </div>
     );
