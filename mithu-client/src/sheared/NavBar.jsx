@@ -38,6 +38,7 @@ const NavBar = () => {
                 alt="profile"
                 height="30"
                 width="30"
+                
               />
             </div>
           </div>
