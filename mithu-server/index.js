@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const jwt = require('jsonwebtoken');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -29,6 +29,12 @@ async function run() {
 
     const petCollection = client.db("mithuDB").collection("petListing")
     const donationCollection = client.db("mithuDB").collection("donation")
+
+    // jwt token api
+
+    
+
+
 
     // pet List 
 
