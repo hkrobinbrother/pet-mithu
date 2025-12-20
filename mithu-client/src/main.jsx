@@ -11,6 +11,8 @@ import DonationCamping from "./Pages/DonationCamping/DonationCamping";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./Provider/AuthProvider";
+import Login from "./Pages/Login/Login";
+import SignUp from "./Pages/SignUp/SignUp";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/Donation",
         element: <DonationCamping></DonationCamping>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>
       },
     ],
   },
