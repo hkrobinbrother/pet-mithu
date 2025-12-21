@@ -13,6 +13,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./Provider/AuthProvider";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
+import SinglePet from "./Pages/PetListing/SinglePet";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "/petListing",
         element: <PetListing></PetListing>,
+      },
+      {
+        path: "/petListing/:id",
+        element: <SinglePet></SinglePet>,
+        loader : ({params}) => fetch(`http://localhost:5000/petListing/${params.id}`)
       },
       {
         path: "/Donation",

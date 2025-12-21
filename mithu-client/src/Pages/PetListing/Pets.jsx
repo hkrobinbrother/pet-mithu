@@ -3,7 +3,8 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Rating } from "@smastrom/react-rating";
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
+import { Link } from "react-router";
 
 const Pets = () => {
   const axiosPublic = useAxiosPublic();
@@ -47,12 +48,18 @@ const Pets = () => {
               <div className="flex items-center justify-between">
                 <h1 className="">
                   {" "}
-                  <Rating style={{ maxWidth: 120 }} value={pet.rating} readOnly />
+                  <Rating
+                    style={{ maxWidth: 120 }}
+                    value={pet.rating}
+                    readOnly
+                  />
                 </h1>
                 <h1 className="text-gray-500 font-bold">{pet.location}</h1>
               </div>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+                <Link className="text-center flex justify-center items-center   w-full mt-2" to={`/petListing/${pet._id}`}>
+                  <button className="btn bg-amber-500">View Details</button>
+                </Link>
               </div>
             </div>
           </div>
