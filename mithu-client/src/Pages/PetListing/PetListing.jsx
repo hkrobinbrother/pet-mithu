@@ -3,6 +3,7 @@ import SectionTitle from "../../Components/SectionTitle";
 import FAQ from "../Home/FAQ";
 import DogListBanner from "./DogListBanner";
 import Pets from "./Pets";
+import BigFooter from "../Home/BigFooter";
 
 const PetListing = () => {
   return (
@@ -26,6 +27,7 @@ const PetListing = () => {
       <div>
         <FAQ></FAQ>
       </div>
+      <BigFooter></BigFooter>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../Components/SectionTitle";
 import DonatePets from "./DonatePets";
 import DonationBanner from "./DonationBanner";
+import BigFooter from "../Home/BigFooter";
 
 const DonationCamping = () => {
   return (
@@ -19,6 +20,7 @@ const DonationCamping = () => {
       <div>
         <DonatePets></DonatePets>
       </div>
+      <BigFooter></BigFooter>
     </div>
   );
 };
