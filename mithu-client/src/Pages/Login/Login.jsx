@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Login = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -14,17 +16,22 @@ const Login = () => {
           <div className="card-body">
             <fieldset className="fieldset">
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Email" />
+              <input name="email" type="email" className="input" placeholder="Email" />
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
+              <input type="password" name="email" className="input" placeholder="Password" />
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
           </div>
+          <div className="flex justify-center items-center">
+            <h1>You have not Account ? please <Link to="/signUp" className="text-green-500 font-bold">SignUp</Link></h1>
+          </div>
         </div>
+
       </div>
+      
     </div>
   );
 };
