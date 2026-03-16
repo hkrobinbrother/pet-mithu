@@ -1,37 +1,103 @@
 import { Link } from "react-router";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+    <div className="min-h-screen bg-base-200 flex items-center justify-center px-4">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-16">
+
+        {/* Image Section */}
+        <div className="hidden lg:block">
+          <img
+            src="/images/login.png"
+            alt="login illustration"
+            className="max-w-md"
+          />
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+
+        {/* Form Section */}
+        <div className="card w-full max-w-sm bg-base-100 shadow-xl">
           <div className="card-body">
-            <fieldset className="fieldset">
-              <label className="label">Email</label>
-              <input name="email" type="email" className="input" placeholder="Email" />
-              <label className="label">Password</label>
-              <input type="password" name="email" className="input" placeholder="Password" />
+
+            <h2 className="text-3xl font-bold text-center mb-4">
+              Welcome Back 👋
+            </h2>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+              {/* Email */}
               <div>
-                <a className="link link-hover">Forgot password?</a>
+                <label className="label">Email</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="input input-bordered w-full"
+                  {...register("email", { required: "Email is required" })}
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
-              <button className="btn btn-neutral mt-4">Login</button>
-            </fieldset>
-          </div>
-          <div className="flex justify-center items-center">
-            <h1>You have not Account ? please <Link to="/signUp" className="text-green-500 font-bold">SignUp</Link></h1>
+
+              {/* Password */}
+              <div>
+                <label className="label">Password</label>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  className="input input-bordered w-full"
+                  {...register("password", { required: "Password is required" })}
+                />
+                {errors.password && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Forgot password */}
+              <div className="text-right">
+                <a className="link link-hover text-sm">
+                  Forgot password?
+                </a>
+              </div>
+
+              {/* Button */}
+              <button
+                type="submit"
+                className="btn btn-primary w-full"
+              >
+                Login
+              </button>
+            </form>
+
+            {/* Signup */}
+            <p className="text-center text-sm mt-4">
+              Don't have an account?{" "}
+              <Link
+                to="/signUp"
+                className="text-primary font-semibold"
+              >
+                Sign Up
+              </Link>
+            </p>
+
           </div>
         </div>
 
       </div>
-      
     </div>
   );
 };

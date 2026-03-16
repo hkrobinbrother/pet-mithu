@@ -13,7 +13,7 @@ const MainLayout = () => {
     <div>
       {!noHeaderFooter && <NavBar />}
 
-      <div>
+      <div  className="min-h-screen">
         <Outlet />
       </div>
 
