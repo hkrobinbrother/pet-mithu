@@ -20,8 +20,9 @@ const SinglePet = () => {
   } = pet;
 
   return (
-    <div className=" min-h-screen py-16 px-4 pt-16">
-      <div className="max-w-6xl pt-50 mx-auto bg-gray-100 shadow-xl rounded-2xl overflow-hidden grid md:grid-cols-2">
+    <div className=" min-h-screen py-16 px-4 items-center
+      justify-center flex bg-gradient-to-r  from-pink-100 to-blue-100">
+      <div className="max-w-6xl p-8 mt-10 mx-auto bg-gray-100 shadow-xl rounded-2xl overflow-hidden grid md:grid-cols-2">
 
         {/* Image Section */}
         <div className="relative">
