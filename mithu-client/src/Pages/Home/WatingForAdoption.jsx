@@ -1,78 +1,98 @@
-import { MdOutlinePets } from "react-icons/md";
-import SectionTitle from "../../Components/SectionTitle";
-
-import { useEffect, useState } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Rating } from "@smastrom/react-rating";
-import { Link, Links } from "react-router";
+import { Link } from "react-router";
+import { useEffect, useState } from "react";
 
 const WatingForAdoption = () => {
+  const [petss, setPets] = useState([]);
+  const pets = petss.slice(0, 6);
 
-  
-
-
-  const [petss,setPets] = useState([])
-
-  const pets = petss.slice(0,6)
-
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:5000/petListing")
-    .then(res => res.json())
-    .then(data => setPets(data))
-  },[])
+      .then((res) => res.json())
+      .then((data) => setPets(data));
+  }, []);
 
   return (
-     <div className="w-10/12 mx-auto mt-10">
-      <div className="grid md:grid-cols-3 gap-4">
+    <div className="w-11/12 md:w-10/12 mx-auto py-16">
+
+      {/* 🔥 Section Title */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
+          🐾 Waiting for Adoption
+        </h2>
+        <p className="text-gray-500 mt-3">
+          Find your perfect companion and give them a loving home ❤️
+        </p>
+      </div>
+
+      {/* 🐶 Cards */}
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {pets.map((pet) => (
-          <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
+          <div
+            key={pet._id}
+            className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 group"
+          >
+            {/* Image */}
+            <div className="overflow-hidden">
               <img
-                className="w-100 h-100 object-cover"
+                className="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
                 src={pet.photo}
-                alt="Shoes"
+                alt={pet.name}
+                loading="lazy"
               />
-            </figure>
-            <div className="card-body">
-              <div>
-                <h1 className="text-2xl font-bold text-red-500 text-center">
-                  {pet.name}
-                </h1>
-              </div>
-              <div className="flex justify-between items-center  font-bold">
-                <h1 className="flex items-center gap-2 text-gray-500 ">
+            </div>
+
+            {/* Content */}
+            <div className="p-5">
+              <h1 className="text-2xl font-bold text-gray-800 text-center mb-2">
+                {pet.name}
+              </h1>
+
+              {/* Info */}
+              <div className="flex justify-between items-center text-gray-500 text-sm mt-3">
+                <span className="flex items-center gap-2">
                   <IoSettingsSharp /> {pet.breed}
-                </h1>
-                <h1 className="flex items-center gap-2 text-gray-500 ">
-                  <FaCalendarAlt />
-                  {pet.birthdate}
-                </h1>
+                </span>
+                <span className="flex items-center gap-2">
+                  <FaCalendarAlt /> {pet.birthdate}
+                </span>
               </div>
-              <div className="divider"></div>
+
+              {/* Divider */}
+              <div className="border-t my-4"></div>
+
+              {/* Rating + Location */}
               <div className="flex items-center justify-between">
-                <h1 className="">
-                  {" "}
-                  <Rating
-                    style={{ maxWidth: 120 }}
-                    value={pet.rating}
-                    readOnly
-                  />
-                </h1>
-                <h1 className="text-gray-500 font-bold">{pet.location}</h1>
+                <Rating style={{ maxWidth: 100 }} value={pet.rating} readOnly />
+                <span className="text-gray-500 text-sm font-medium">
+                  {pet.location}
+                </span>
               </div>
-              <div className="card-actions justify-end">
-                <Link className="text-center flex justify-center items-center   w-full mt-2" to={`/petListing/${pet._id}`}>
-                  <button className="btn bg-amber-500">View Details</button>
+
+              {/* Button */}
+              <div className="mt-5">
+                <Link to={`/petListing/${pet._id}`}>
+                  <button className="w-full py-2 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 text-white font-semibold hover:opacity-90 transition">
+                    View Details
+                  </button>
                 </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
-     <div className=" justify-center items-center flex text-center mt-6">
-       <Link  to={"/petListing"} className="btn bg-amber-400 text-black font-bold justify-center items-center flex text-center">View All</Link>
-     </div>
+
+      {/* 🔽 View All */}
+      <div className="flex justify-center mt-12">
+        <Link
+          to="/petListing"
+          className="px-8 py-3 rounded-full bg-amber-400 text-black font-bold hover:bg-amber-500 transition shadow-md"
+        >
+          View All Pets
+        </Link>
+      </div>
     </div>
   );
 };

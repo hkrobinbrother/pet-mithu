@@ -13,38 +13,32 @@ import BannerText from "../Home/BannerText"
 
 const Banner = () => {
   return (
-    <div className="relative h-[800px] ">
-      <div className="">
-        <Carousel
-          autoPlay={true}
-          interval={2000}
-          infiniteLoop={true}
-          showArrows={true}
-          showStatus={false}
-          showIndicators={true}
-          stopOnHover={false}
-          
-        >
-          <div  className="h-200" >
-            <img className="h-full w-full object-cover" src={img1} />
+    <div className="relative h-[70vh]">
+      <Carousel
+        autoPlay
+        interval={4000}
+        transitionTime={800}
+        infiniteLoop
+        showArrows
+        showStatus={false}
+        showIndicators
+        stopOnHover
+      >
+        {[img1, img2, img3, img4, img5].map((img, i) => (
+          <div key={i} className="h-[70vh]">
+            <img
+              loading="lazy"
+              className="h-full w-full object-cover"
+              src={img}
+              alt={`banner-${i}`}
+            />
           </div>
-          <div className="h-200">
-            <img className="h-full w-full object-cover"  src={img2} />
-          </div>
-          <div className="h-200">
-            <img className="h-full w-full object-cover"  src={img3} />
-          </div>
-          <div className="h-200">
-            <img className="h-full w-full object-cover"  src={img4} />
-          </div>
-          <div className="h-200">
-            <img className="h-full w-full object-cover"  src={img5} />
-          </div>
-        </Carousel>
+        ))}
+      </Carousel>
+
+      <div className="absolute inset-0 z-50 flex items-center justify-center">
+        <BannerText />
       </div>
-     <div className="z-50">
-      <BannerText></BannerText>
-     </div>
     </div>
   );
 };
