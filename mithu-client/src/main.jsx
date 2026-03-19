@@ -3,7 +3,7 @@ import "./index.css";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-
+import { Toaster } from "react-hot-toast";
 import Home from "./Pages/Home/Home";
 import MainLayout from "./Layout/MainLayout";
 import PetListing from "./Pages/PetListing/PetListing";
@@ -15,6 +15,7 @@ import Login from "./Pages/Login/Login";
 
 import SinglePet from "./Pages/PetListing/SinglePet";
 import SignUp from "./Pages/SignUp/SignUp";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 const queryClient = new QueryClient();
 
@@ -35,12 +36,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/petListing/:id",
-        element: <SinglePet></SinglePet>,
-        loader : ({params}) => fetch(`http://localhost:5000/petListing/${params.id}`)
+        element: <PrivateRoute><SinglePet></SinglePet></PrivateRoute>,
+        loader : ({params}) => fetch(`${import.meta.env.VITE_baseUrl}/petListing/${params.id}`)
       },
       {
         path: "/Donation",
-        element: <DonationCamping></DonationCamping>,
+        element: <PrivateRoute><DonationCamping></DonationCamping></PrivateRoute>,
       },
       {
         path: "/login",
@@ -60,7 +61,10 @@ ReactDOM.createRoot(root).render(
   <AuthProvider>
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
-        <RouterProvider router={router} />,
+        <>
+          <RouterProvider router={router} />
+          <Toaster position="top-right" reverseOrder={false} />
+        </>
       </HelmetProvider>
     </QueryClientProvider>
   </AuthProvider>
