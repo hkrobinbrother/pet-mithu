@@ -18,6 +18,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import PrivateRoute from "./Routes/PrivateRoute";
 import DashboardHome from "./Dashboard/DashboardHome";
 import DashboardLayout from "./Layout/DashboardLayOut";
+import Profile from "./Components/Profile";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/petListing",
         element: <PetListing></PetListing>,
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
       },
       {
         path: "/petListing/:id",

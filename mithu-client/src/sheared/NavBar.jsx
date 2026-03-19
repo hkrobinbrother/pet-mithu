@@ -56,9 +56,9 @@ const NavBar = () => {
           {/* User Dropdown */}
           <div className="relative flex items-center gap-2">
             {user && (
-              <span className="hidden md:block text-white font-semibold">
+              <Link to="/profile" className="hidden md:block text-white font-semibold">
                 {user.displayName}
-              </span>
+              </Link>
             )}
 
             <div
