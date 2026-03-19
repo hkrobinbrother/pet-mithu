@@ -1,10 +1,26 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { FaHome, FaDog, FaPlus, FaHeart } from "react-icons/fa";
-
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 const Sidebar = () => {
+    const {logOut} = useContext(AuthContext);
+    const navigate = useNavigate();
+      const handleLogout = () => {
+    logOut()
+      .then(() => {
+    
+        navigate("/login");
+        toast.success("Logged out successfully");
+      })
+      .catch((error) => {
+        toast.error("Logout failed");
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="h-screen w-64 bg-gray-900 text-white flex flex-col shadow-lg">
-
       {/* Logo / Title */}
       <div className="p-5 text-2xl font-bold border-b border-gray-700">
         🐾 Pet Dashboard
@@ -12,7 +28,6 @@ const Sidebar = () => {
 
       {/* Menu */}
       <nav className="flex-1 p-4 space-y-2">
-
         <NavLink
           to="/dashboard"
           end
@@ -57,8 +72,14 @@ const Sidebar = () => {
         >
           <FaHeart /> Donations
         </NavLink>
-
       </nav>
+      <div
+        onClick={handleLogout}
+        className="flex items-center justify-center p-3 rounded-lg w-2/3 mx-auto mb-4
+        border-amber-600 shadow-amber-200 shadow-xs border-2 hover:bg-amber-500 cursor-pointer transition"
+      >
+        Logout
+      </div>
 
       {/* Footer */}
       <div className="p-4 border-t border-gray-700 text-sm text-gray-400">
