@@ -16,6 +16,8 @@ import Login from "./Pages/Login/Login";
 import SinglePet from "./Pages/PetListing/SinglePet";
 import SignUp from "./Pages/SignUp/SignUp";
 import PrivateRoute from "./Routes/PrivateRoute";
+import DashboardHome from "./Dashboard/DashboardHome";
+import DashboardLayout from "./Layout/DashboardLayOut";
 
 const queryClient = new QueryClient();
 
@@ -27,32 +29,55 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-       
       },
-    
+
       {
         path: "/petListing",
         element: <PetListing></PetListing>,
       },
       {
         path: "/petListing/:id",
-        element: <PrivateRoute><SinglePet></SinglePet></PrivateRoute>,
-        loader : ({params}) => fetch(`${import.meta.env.VITE_baseUrl}/petListing/${params.id}`)
+        element: (
+          <PrivateRoute>
+            <SinglePet></SinglePet>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_baseUrl}/petListing/${params.id}`),
       },
       {
         path: "/Donation",
-        element: <PrivateRoute><DonationCamping></DonationCamping></PrivateRoute>,
-      },
-      {
-        path: "/login",
-        element: <Login></Login>
-      },
-      {
-        path: "/signUp",
-        element: <SignUp></SignUp>
+        element: (
+          <PrivateRoute>
+            <DonationCamping></DonationCamping>
+          </PrivateRoute>
+        ),
       },
     ],
   },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/signUp",
+    element: <SignUp></SignUp>,
+  },
+  {
+  path: "/dashboard",
+  element: (
+    <PrivateRoute>
+      <DashboardLayout />
+    </PrivateRoute>
+  ),
+  children: [
+    {
+      index: true,
+      element: <DashboardHome />,
+    },
+    
+  ],
+}
 ]);
 
 const root = document.getElementById("root");
@@ -67,5 +92,5 @@ ReactDOM.createRoot(root).render(
         </>
       </HelmetProvider>
     </QueryClientProvider>
-  </AuthProvider>
+  </AuthProvider>,
 );

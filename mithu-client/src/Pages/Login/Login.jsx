@@ -78,7 +78,7 @@ const Login = () => {
 
       navigate(from, { replace: true });
 
-    } catch (error) {
+    } catch {
       toast.error("Login failed");
     } finally {
       setLoading(false);
