@@ -79,6 +79,18 @@ async function run() {
       res.send(result);
     });
 
+    app.post("/petListing", (req, res) => {
+  const petData = req.body;
+  console.log("Received:", petData);
+
+  // 👉 here you will save to DB (MongoDB later)
+  res.send({
+    success: true,
+    message: "Pet added successfully",
+    data: petData,
+  });
+});
+
     // Donations
     app.get("/donation", async (req, res) => {
       const result = await donationCollection.find().toArray();

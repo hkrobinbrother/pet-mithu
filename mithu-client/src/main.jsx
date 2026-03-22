@@ -19,6 +19,7 @@ import PrivateRoute from "./Routes/PrivateRoute";
 import DashboardHome from "./Dashboard/DashboardHome";
 import DashboardLayout from "./Layout/DashboardLayOut";
 import Profile from "./Components/Profile";
+import PetForm from "./Dashboard/PetFrom";
 
 const queryClient = new QueryClient();
 
@@ -80,6 +81,11 @@ const router = createBrowserRouter([
       index: true,
       element: <DashboardHome />,
     },
+    {
+      path:"petFrom",
+      element: <PetForm />
+
+    }
     
   ],
 }

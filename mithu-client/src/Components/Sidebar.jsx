@@ -52,7 +52,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          to="/dashboard/add-pet"
+          to="/dashboard/petFrom"
           className={({ isActive }) =>
             `flex items-center gap-3 p-3 rounded-lg transition ${
               isActive ? "bg-amber-500" : "hover:bg-gray-700"
