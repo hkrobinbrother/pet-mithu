@@ -26,7 +26,7 @@ const Pets = () => {
               <img
                 className="w-100 h-100 object-cover"
                 src={pet.photo}
-                alt="Shoes"
+                alt="pets photo"
               />
             </figure>
             <div className="card-body">
