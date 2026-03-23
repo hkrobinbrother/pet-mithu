@@ -20,7 +20,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-screen w-64 bg-gray-900 text-white flex flex-col shadow-lg">
+    <div className="m w-64 bg-gray-900 text-white flex flex-col shadow-lg">
       {/* Logo / Title */}
       <div className="p-5 text-2xl font-bold border-b border-gray-700">
         🐾 Pet Dashboard

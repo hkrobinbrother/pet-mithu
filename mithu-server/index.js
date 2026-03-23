@@ -79,18 +79,28 @@ async function run() {
       res.send(result);
     });
 
-    app.post("/petListing", (req, res) => {
-  const petData = req.body;
-  console.log("Received:", petData);
+    app.post("/petListing", async (req, res) => {
+  try {
+    const petData = req.body;
 
-  // 👉 here you will save to DB (MongoDB later)
-  res.send({
-    success: true,
-    message: "Pet added successfully",
-    data: petData,
-  });
+    const result = await petCollection.insertOne({
+      ...petData,
+      createdAt: new Date(), // optional but recommended
+    });
+
+    res.send({
+      success: true,
+      message: "Pet added successfully",
+      insertedId: result.insertedId,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      success: false,
+      message: "Failed to add pet",
+    });
+  }
 });
-
     // Donations
     app.get("/donation", async (req, res) => {
       const result = await donationCollection.find().toArray();
