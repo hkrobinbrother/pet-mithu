@@ -80,31 +80,45 @@ async function run() {
     });
 
     app.post("/petListing", async (req, res) => {
-  try {
-    const petData = req.body;
+      try {
+        const petData = req.body;
 
-    const result = await petCollection.insertOne({
-      ...petData,
-      createdAt: new Date(), // optional but recommended
-    });
+        const result = await petCollection.insertOne({
+          ...petData,
+          createdAt: new Date(), // optional but recommended
+        });
 
-    res.send({
-      success: true,
-      message: "Pet added successfully",
-      insertedId: result.insertedId,
+        res.send({
+          success: true,
+          message: "Pet added successfully",
+          insertedId: result.insertedId,
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({
+          success: false,
+          message: "Failed to add pet",
+        });
+      }
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({
-      success: false,
-      message: "Failed to add pet",
-    });
-  }
-});
     // Donations
     app.get("/donation", async (req, res) => {
       const result = await donationCollection.find().toArray();
       res.send(result);
+    });
+
+    app.post("/donation", async (req, res) => {
+      const data = req.body;
+      try {
+        const result = await donationCollection.insertOne(data);
+        res.send(result);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({
+          success: false,
+          message: "Failed to add donation",
+        });
+      }
     });
 
     console.log("MongoDB connected successfully!");

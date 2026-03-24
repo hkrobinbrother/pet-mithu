@@ -29,6 +29,7 @@ const DashboardHome = () => {
         </div>
 
       </div>
+      
 
       {/* Quick Actions */}
       <div className="bg-white p-6 rounded-2xl shadow">
@@ -36,7 +37,7 @@ const DashboardHome = () => {
 
         <div className="flex flex-wrap gap-4">
           <Link
-            to="/dashboard/add-pet"
+            to="/dashboard/petFrom"
             className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition"
           >
             ➕ Add New Pet

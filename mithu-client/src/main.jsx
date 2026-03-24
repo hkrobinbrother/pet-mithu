@@ -20,6 +20,7 @@ import DashboardHome from "./Dashboard/DashboardHome";
 import DashboardLayout from "./Layout/DashboardLayOut";
 import Profile from "./Components/Profile";
 import PetForm from "./Dashboard/PetFrom";
+import AddDonationPet from "./Dashboard/AddDonationPet";
 
 const queryClient = new QueryClient();
 
@@ -84,6 +85,11 @@ const router = createBrowserRouter([
     {
       path:"petFrom",
       element: <PetForm />
+
+    },
+    {
+      path:"addDonationPet",
+      element: <AddDonationPet />
 
     }
     
