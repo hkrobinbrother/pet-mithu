@@ -70,7 +70,7 @@ const Sidebar = () => {
             }`
           }
         >
-          <FaHeart /> Donations
+          <FaHeart />Add Donations Pet 
         </NavLink>
       </nav>
       <div
