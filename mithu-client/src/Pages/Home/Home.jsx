@@ -7,6 +7,7 @@ import Happycoustomer from "./Happycoustomer";
 
 import WatingForAdoption from "./WatingForAdoption";
 import WorkingForDog from "./WorkingForDog";
+import CategorySection from "./CategorySection ";
 
 
 
@@ -21,6 +22,7 @@ const Home = () => {
                 <title>Mithu | Home</title>
             </Helmet>
             <Banner></Banner>
+            <CategorySection></CategorySection>
             <WorkingForDog></WorkingForDog>
             <WatingForAdoption></WatingForAdoption>
             <AboutUs></AboutUs>

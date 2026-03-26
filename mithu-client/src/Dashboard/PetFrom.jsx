@@ -20,34 +20,26 @@ export default function PetForm() {
     const birth = new Date(date);
     let age = today.getFullYear() - birth.getFullYear();
     const m = today.getMonth() - birth.getMonth();
-
     if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
       age--;
     }
-
     return age;
   };
 
   const onSubmit = async (data) => {
     try {
-      // 👉 Get image file
       const imageFile = data.image[0];
-
-      // 👉 Upload to ImgBB
       const formData = new FormData();
       formData.append("image", imageFile);
 
       const imgbbRes = await axios.post(
         `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
-        formData,
+        formData
       );
 
       const photo = imgbbRes.data.data.url;
-
-      // 👉 Calculate age
       const age = calculateAge(data.birthdate);
 
-      // 👉 Final pet data
       const petData = {
         name: data.name,
         description: data.description,
@@ -60,13 +52,13 @@ export default function PetForm() {
         location: data.location,
         photo: photo,
         price: Number(data.price),
-        rating: Number(data.rating), 
+        rating: Number(data.rating),
+        category: data.category, // 🔥 NEW FIELD
       };
 
-      // 👉 Send to backend
       const res = await axios.post(
         `${import.meta.env.VITE_baseUrl}/petListing`,
-        petData,
+        petData
       );
 
       console.log(res.data);
@@ -96,9 +88,7 @@ export default function PetForm() {
                 className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-yellow-400 outline-none"
               />
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.name.message}
-                </p>
+                <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
               )}
             </div>
 
@@ -110,23 +100,27 @@ export default function PetForm() {
                 className="w-full px-4 py-2 rounded-xl border bg-white cursor-pointer"
               />
               {errors.image && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.image.message}
-                </p>
+                <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>
               )}
             </div>
           </div>
 
-          {/* Image Preview */}
-          {watch("image")?.[0] && (
-            <div className="flex justify-center">
-              <img
-                src={URL.createObjectURL(watch("image")[0])}
-                alt="preview"
-                className="w-40 h-40 object-cover rounded-2xl shadow-md border"
-              />
-            </div>
-          )}
+          {/* Category Dropdown */}
+          <div>
+            <select
+              {...register("category", { required: "Category is required" })}
+              className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-yellow-400 outline-none"
+            >
+              <option value="">Select Category</option>
+              <option value="cat">Cats 🐱</option>
+              <option value="dog">Dogs 🐶</option>
+              <option value="rabbit">Rabbit 🐰</option>
+              <option value="fish">Fish 🐟</option>
+            </select>
+            {errors.category && (
+              <p className="text-red-500 text-sm mt-1">{errors.category.message}</p>
+            )}
+          </div>
 
           {/* Description */}
           <textarea
@@ -143,7 +137,6 @@ export default function PetForm() {
               {...register("breed")}
               className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-yellow-400 outline-none"
             />
-
             <input
               type="text"
               placeholder="Color"
@@ -176,20 +169,14 @@ export default function PetForm() {
 
           {/* Birthdate */}
           <div>
-            <label className="text-sm font-semibold text-gray-600">
-              Birthdate
-            </label>
+            <label className="text-sm font-semibold text-gray-600">Birthdate</label>
             <input
               type="date"
-              {...register("birthdate", {
-                required: "Birthdate is required",
-              })}
+              {...register("birthdate", { required: "Birthdate is required" })}
               className="w-full px-4 py-3 rounded-xl border mt-1 focus:ring-2 focus:ring-yellow-400 outline-none"
             />
             {errors.birthdate && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.birthdate.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.birthdate.message}</p>
             )}
           </div>
 
@@ -202,6 +189,7 @@ export default function PetForm() {
               </span>
             </p>
           )}
+
           {/* Price + Rating */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
@@ -209,7 +197,7 @@ export default function PetForm() {
                 type="number"
                 placeholder="Price ($)"
                 {...register("price", { required: "Price is required" })}
-               className="w-full px-4 py-3 rounded-xl border mt-1 focus:ring-2 focus:ring-yellow-400 outline-none"
+                className="w-full px-4 py-3 rounded-xl border mt-1 focus:ring-2 focus:ring-yellow-400 outline-none"
               />
               {errors.price && (
                 <p className="text-red-500 text-sm">{errors.price.message}</p>

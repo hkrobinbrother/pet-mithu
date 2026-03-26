@@ -1,7 +1,6 @@
-import smallDog  from "../../../public/images/2dog.png"
+import smallDog from "../../../public/images/2dog.png";
 const BigFooter = () => {
   return (
-    
     <div mt-10>
       <footer className="footer bg-amber-50 sm:footer-horizontal  text-base-content mt-10 p-10">
         <nav>
@@ -9,7 +8,7 @@ const BigFooter = () => {
           <a className="link link-hover">Branding</a>
           <a className="link link-hover">Design</a>
           <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>                
+          <a className="link link-hover">Advertisement</a>
         </nav>
         <nav>
           <h6 className="footer-title">Company</h6>
@@ -19,10 +18,12 @@ const BigFooter = () => {
           <a className="link link-hover">Press kit</a>
         </nav>
         <nav>
-          
           <div className="grid grid-flow-col gap-4">
-           
-           <img className=" w-full h-60 object-cover" src={ smallDog} alt="" />
+            <img
+              className=" w-full h-60 rounded-4xl object-cover"
+              src="https://i.ibb.co.com/vvzrv57j/pexels-nadialovessingle-6821106.jpg"
+              alt=""
+            />
           </div>
         </nav>
       </footer>

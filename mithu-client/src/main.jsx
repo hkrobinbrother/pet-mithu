@@ -21,6 +21,7 @@ import DashboardLayout from "./Layout/DashboardLayOut";
 import Profile from "./Components/Profile";
 import PetForm from "./Dashboard/PetFrom";
 import AddDonationPet from "./Dashboard/AddDonationPet";
+import CategoryPets from "./Pages/Home/CategoryPets";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/petListing",
         element: <PetListing></PetListing>,
+      },
+      {
+        path: "/category/:categoryName",
+        element: <CategoryPets />,
       },
       {
         path: "/profile",
@@ -71,30 +76,27 @@ const router = createBrowserRouter([
     element: <SignUp></SignUp>,
   },
   {
-  path: "/dashboard",
-  element: (
-    <PrivateRoute>
-      <DashboardLayout />
-    </PrivateRoute>
-  ),
-  children: [
-    {
-      index: true,
-      element: <DashboardHome />,
-    },
-    {
-      path:"petFrom",
-      element: <PetForm />
-
-    },
-    {
-      path:"addDonationPet",
-      element: <AddDonationPet />
-
-    }
-    
-  ],
-}
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: "petFrom",
+        element: <PetForm />,
+      },
+      {
+        path: "addDonationPet",
+        element: <AddDonationPet />,
+      },
+    ],
+  },
 ]);
 
 const root = document.getElementById("root");

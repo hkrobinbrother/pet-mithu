@@ -69,7 +69,14 @@ async function run() {
 
     // Pet Listing
     app.get("/petListing", async (req, res) => {
-      const result = await petCollection.find().toArray();
+      const category = req.query.category;
+
+      let query = {};
+      if (category) {
+        query.category = category.toLowerCase();
+      }
+
+      const result = await petCollection.find(query).toArray();
       res.send(result);
     });
 
